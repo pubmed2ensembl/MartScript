@@ -1,0 +1,26 @@
+--- old/gene.template.xml.formatted	2009-06-17 19:29:58.000000000 +0100
++++ new/gene.template.xml.formatted	2009-06-17 19:29:44.000000000 +0100
+@@ -3259,6 +3259,FILTER_LIMIT_LINES @@
+     <FilterGroup description="Filter on Gene Related Accessions and Filters" displayName="GENE:" internalName="gene">
+       <FilterCollection displayName="Limit to genes ..." internalName="id_list">
+         <FilterDescription displayType="container" internalName="new_id_list_filters" type="boolean_list">
+FILTER_LIMIT_PLACEHOLDER
+           <Option displayName="with VEGA gene ID(s)" displayType="list" field="ox_vega_gene_bool" internalName="with_vega_gene" isSelectable="true" key="gene_id_1020_key" legal_qualifiers="only,excluded" qualifier="only" style="radio" tableConstraint="main" type="boolean">
+             <Option displayName="Only" internalName="only" isSelectable="true" value="only"/>
+             <Option displayName="Excluded" internalName="excluded" isSelectable="true" value="excluded"/>
+@@ -3380,6 +3388,FILTER_LIST_LINES @@
+           <Option checkForNulls="true" displayName="MGI ID(s)" displayType="text" field="dbprimary_acc_1074" internalName="mgi_id" isSelectable="true" key="gene_id_1020_key" legal_qualifiers="=,in" multipleValues="1" qualifier="=" tableConstraint="ox_MGI__dm" type="list"/>
+           <Option checkForNulls="true" displayName="IMGT ID(s)" displayType="text" field="dbprimary_acc_1074" internalName="imgt" isSelectable="true" key="gene_id_1020_key" legal_qualifiers="=,in" multipleValues="1" qualifier="=" tableConstraint="ox_IMGT__dm" type="list"/>
+           <Option checkForNulls="true" displayName="Pubmed ID(s)" displayType="text" field="dbprimary_acc_1074" internalName="pubmed" isSelectable="true" key="gene_id_1020_key" legal_qualifiers="=,in" multipleValues="1" qualifier="=" tableConstraint="ox_PUBMED__dm" type="list"/>
+FILTER_LIST_PLACEHOLDER
+           <Option checkForNulls="true" displayName="RefSeq DNA ID(s)" displayType="text" field="dbprimary_acc_1074" internalName="refseq_dna" isSelectable="true" key="gene_id_1020_key" legal_qualifiers="=,in" multipleValues="1" qualifier="=" tableConstraint="ox_RefSeq_dna__dm" type="text"/>
+           <Option checkForNulls="true" displayName="RefSeq predicted DNA ID(s)" displayType="text" field="dbprimary_acc_1074" internalName="refseq_dna_predicted" isSelectable="true" key="gene_id_1020_key" legal_qualifiers="=,in" multipleValues="1" qualifier="=" tableConstraint="ox_RefSeq_dna_predicted__dm" type="text"/>
+           <Option checkForNulls="true" displayName="RefSeq RNA ID(s)" displayType="text" field="dbprimary_acc_1074" internalName="refseq_rna" isSelectable="true" key="gene_id_1020_key" legal_qualifiers="=,in" multipleValues="1" qualifier="=" tableConstraint="ox_RefSeq_rna__dm" type="text"/>
+@@ -3688,6 +3636,ATTRIBUTE_FEATURE_LINES @@
+         <AttributeDescription displayName="NCoils" field="hit_id_1048" hidden="true" hideDisplay="true" internalName="ncoils" key="translation_id_1068_key" linkoutURL="exturl|http://www.sanger.ac.uk/cgi-bin/Pfam/getacc?%s" maxLength="7" tableConstraint="protein_feature_ncoils__dm"/>
+       </AttributeCollection>
+     </AttributeGroup>
+ATTRIBUTE_FEATURE_CONTEXT_PLACEHOLDER
+   </AttributePage>
+   <AttributePage description="Details on Genomic Structures" displayName="Structures" internalName="structure" outFormats="html,*mouse_formatter1*,txt,csv,*mouse_formatter3*,tsv,*mouse_formatter2*,xls,gff">
+     <AttributeGroup displayName="GENE:" internalName="gene">

@@ -1,0 +1,26 @@
+--- old/gene_ensembl_template.template.xml.formatted	2010-05-24 15:55:44.000000000 +0100
++++ new/gene_ensembl_template.template.xml.formatted	2010-05-24 15:58:22.000000000 +0100
+@@ -11706,6 +11706,FILTER_LIMIT_LINES @@
+     <FilterGroup description="Filter on Gene Related Accessions and Filters" displayName="GENE:" internalName="gene">
+       <FilterCollection displayName="Limit to genes ..." internalName="id_list">
+         <FilterDescription displayType="container" internalName="new_id_list_filters" type="boolean_list">
++FILTER_LIMIT_PLACEHOLDER
+           <Option displayName="with Custom platypus exon ID(s)" displayType="list" field="ox_custom_platypus_exon_bool" internalName="with_custom_platypus_exon" isSelectable="true" key="transcript_id_1064_key" legal_qualifiers="only,excluded" qualifier="only" style="radio" tableConstraint="main" type="boolean">
+             <Option displayName="Only" internalName="only" isSelectable="true" value="only"/>
+             <Option displayName="Excluded" internalName="excluded" isSelectable="true" value="excluded"/>
+@@ -12550,6 +12551,FILTER_LIST_LINES @@
+       </FilterCollection>
+       <FilterCollection displayName="ID list limit" internalName="id_list_limit">
+         <FilterDescription displayName="Entries with following IDs" displayType="container" internalName="id_list_limit_filters" type="id_list">
++FILTER_LIST_PLACEHOLDER
+           <Option description="Filter to include genes with supplied list of Ensembl Gene IDs" displayName="Ensembl Gene ID(s) [e.g. ENSG00000139618]" displayType="text" field="stable_id_1023" internalName="ensembl_gene_id" isSelectable="true" key="gene_id_1020_key" legal_qualifiers="=,in" multipleValues="1" qualifier="=" tableConstraint="main" type="list"/>
+           <Option description="Filter for genes with supplied list of Ensembl Transcript Stable ID(s)" displayName="Ensembl Transcript ID(s) [e.g. ENST00000380152]" displayType="text" field="stable_id_1066" internalName="ensembl_transcript_id" isSelectable="true" key="transcript_id_1064_key" legal_qualifiers="=,in" multipleValues="1" qualifier="=" tableConstraint="main" type="text"/>
+           <Option description="Filter to include genes with supplied list of Ensembl translation ID(s)" displayName="Ensembl protein ID(s) [e.g. ENSP00000369497]" displayType="text" field="stable_id_1070" internalName="ensembl_peptide_id" isSelectable="true" key="translation_id_1068_key" legal_qualifiers="=,in" multipleValues="1" qualifier="=" tableConstraint="main" type="text"/>
+@@ -17646,6 +17648,ATTRIBUTE_FEATURE_LINES @@
+         <AttributeDescription displayName="Subtype description" field="feature_value" internalName="feature_value" key="gene_id_1020_key" maxLength="255" tableConstraint="gene_miscfeature__dm"/>
+       </AttributeCollection>
+     </AttributeGroup>
++ATTRIBUTE_FEATURE_CONTEXT_PLACEHOLDER
+   </AttributePage>
+   <AttributePage description="Details on Genomic Structures" displayName="Structures" internalName="structure" outFormats="html,*mouse_formatter1*,txt,csv,*mouse_formatter3*,tsv,*mouse_formatter2*,xls,gff">
+     <AttributeGroup displayName="GENE:" internalName="gene">
