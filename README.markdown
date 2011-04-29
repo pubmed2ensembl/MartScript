@@ -2,7 +2,8 @@ MartScript
 ==========
 
 MartScript is a simple non-branching imperative scripting language
-for creating BioMarts automatically (i.e. non-interactively). The
+for creating BioMarts (see [www.biomart.org](http://www.biomart.org)) 
+automatically (i.e. non-interactively). The
 language supports
 
  * extending Ensembl databases with custom data
@@ -10,7 +11,7 @@ language supports
  * the creation and execution of a mart's SQL-commands
 
 This is a fully functional release of MartScript as a beta version,
-mainly due to the lack of documentation (will follow 'shortly') and
+mainly due to the lack of documentation and
 some minor cosmetic issues. However, we used MartScript in production
 to create: [www.pubmed2ensembl.org](http://www.pubmed2ensembl.org)
 
