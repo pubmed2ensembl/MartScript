@@ -27,7 +27,7 @@ License
 
 MartScript itself is released under the 2-clause BSD License.
 
-Copyright © 2010, The University of Manchester. 
+Copyright (c) 2010, The University of Manchester. 
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are
