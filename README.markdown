@@ -26,4 +26,4 @@ are released under LGPL.
 License
 -------
 
-MartScript is released under the LGPL (see LICENCE).
+MartScript is released under the LGPL (see LICENSE).
