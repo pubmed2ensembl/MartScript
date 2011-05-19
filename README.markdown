@@ -7,8 +7,8 @@ automatically (i.e. non-interactively). The
 language supports
 
  * extending Ensembl databases with custom data
- * automatisation of MartBuilder/MartEditor functionality
- * the creation and execution of a mart's SQL-commands
+ * automation of MartBuilder/MartEditor functionality
+ * the creation and execution of a BioMart's SQL-commands
 
 This is a fully functional release of MartScript as a beta version,
 mainly due to the lack of documentation and
