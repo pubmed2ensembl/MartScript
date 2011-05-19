@@ -1,0 +1,223 @@
+# Ensembl Mart, Version 56
+
+set default shell script path to /home/data/MartScript/scripts
+set default sequence mart scripts path to /we/do/not/build/a/sequence/mart/on/this/machine
+set default ensembl home path to /we/do/not/build/a/sequence/mart/on/this/machine
+set default ensembl database to core
+set default ensembl version to 56
+set default perl interpreter path to /usr/bin/perl
+set default perl library path to /we/do/not/build/a/sequencemart/on/this/machine
+set default taxonomy dump path to /home/joachim/names.dmp
+set default host to 127.0.0.1
+set default port to 3307
+set default username to USER
+set default password to PASS
+
+#create master schema 56 templates
+
+create gene feature table entrez from /home/data/marts/ensembl56/data/gene2pubmed
+rename column entrez_1 of table entrez as pmid
+
+create gene feature table pmc_pmid_x from /home/data/marts/ensembl56/data/pmc_apr10_pmids_excerpts
+rename column pmc_pmid_x_1 of table pmc_pmid_x as pmid_w_excerpt
+
+create gene feature table pmc_pmcid_x from /home/data/marts/ensembl56/data/pmc_apr10_pmcids_excerpts
+rename column pmc_pmcid_x_1 of table pmc_pmcid_x as pmcid_w_excerpt
+
+create gene feature table pmc from /home/data/marts/ensembl56/data/pmc_apr10
+rename column pmc_1 of table pmc as pmcid
+rename column pmc_2 of table pmc as pmid
+
+create gene feature table medline_x from /home/data/marts/ensembl56/data/medline_apr10_excerpts
+rename column medline_x_1 of table medline_x as pmid_w_excerpt
+
+create gene feature table medline from /home/data/marts/ensembl56/data/medline_apr10
+rename column medline_1 of table medline as pmid
+
+create gene feature table medline_x_oct09 from /home/data/marts/ensembl56/data/medline_oct09_excerpts
+rename column medline_x_oct09_1 of table medline_x_oct09 as pmid_w_excerpt
+
+create gene feature table medline_oct09 from /home/data/marts/ensembl56/data/medline_oct09
+rename column medline_oct09_1 of table medline_oct09 as pmid
+
+create gene feature table blast56_all from /home/data/marts/ensembl56/data/blast56_all
+rename column blast56_all_1 of table blast56_all as pmid
+rename column blast56_all_2 of table blast56_all as stable_id
+
+create gene feature table blast56_c100 from /home/data/marts/ensembl56/data/blast56_cut100
+rename column blast56_c100_1 of table blast56_c100 as pmid
+rename column blast56_c100_2 of table blast56_c100 as stable_id
+
+create gene feature table blast56_c100t from /home/data/marts/ensembl56/data/blast56_cut100_txt
+rename column blast56_c100t_1 of table blast56_c100t as pmid
+rename column blast56_c100t_2 of table blast56_c100t as stable_id
+
+create gene feature table embl from /home/data/marts/ensembl56/data/embl102refs_genes
+rename column embl_1 of table embl as pmid
+rename column embl_2 of table embl as stable_id
+
+create gene feature table text from /home/data/marts/ensembl56/data/text2genome_apr10
+rename column text_1 of table text as stable_id
+rename column text_2 of table text as pmid
+rename column text_3 of table text as pmcid
+
+create gene feature table entrez_flat of all species as fusion of column pmid of tables entrez
+rename table entrez_flat_entrez to entrez_flat
+
+create gene feature table pmc_pmid_flat of all species as fusion of column pmid_w_excerpt of tables pmc_pmid_x
+rename table pmc_pmid_flat_pmc_pmid_x to pmc_pmid_flat
+create gene feature table pmc_pmcid_flat of all species as fusion of column pmcid_w_excerpt of tables pmc_pmcid_x
+rename table pmc_pmcid_flat_pmc_pmcid_x to pmc_pmcid_flat
+
+create gene feature table medline_flat of all species as fusion of column pmid_w_excerpt of tables medline_x
+rename table medline_flat_medline_x to medline_flat
+
+create gene feature table medline_oct09_flat of all species as fusion of column pmid_w_excerpt of tables medline_x_oct09
+rename table medline_oct09_flat_medline_x_oct09 to medline_oct09_flat
+
+create gene feature table blast56_all_flat of all species as fusion of column pmid of tables blast56_all
+rename table blast56_all_flat_blast56_all to blast56_all_flat
+
+create gene feature table blast56_c100_flat of all species as fusion of column pmid of tables blast56_c100
+rename table blast56_c100_flat_blast56_c100 to blast56_c100_flat
+
+create gene feature table blast56_c100t_flat of all species as fusion of column pmid of tables blast56_c100t
+rename table blast56_c100t_flat_blast56_c100t to blast56_c100t_flat
+
+create gene feature table embl_flat of all species as fusion of column pmid of tables embl
+rename table embl_flat_embl to embl_flat
+
+create gene feature table text_pmid_flat of all species as fusion of column pmid of tables text
+rename table text_pmid_flat_text to text_pmid_flat
+create gene feature table text_pmcid_flat of all species as fusion of column pmcid of tables text
+rename table text_pmcid_flat_text to text_pmcid_flat
+
+open mart file /home/data/marts/ensembl56/ensembl_55_56.xml
+
+add gene feature table entrez to all species
+add gene feature table entrez_flat to all species
+
+add gene feature table pmc to all species
+add gene feature table pmc_pmid_flat to all species
+add gene feature table pmc_pmcid_flat to all species
+
+add gene feature table medline to all species
+add gene feature table medline_flat to all species
+
+add gene feature table medline_oct09 to all species
+add gene feature table medline_oct09_flat to all species
+
+add gene feature table blast56_all to all species
+add gene feature table blast56_all_flat to all species
+
+add gene feature table blast56_c100 to all species
+add gene feature table blast56_c100_flat to all species
+
+add gene feature table blast56_c100t to all species
+add gene feature table blast56_c100t_flat to all species
+
+add gene feature table embl to all species
+add gene feature table embl_flat to all species
+
+add gene feature table text to all species
+add gene feature table text_pmid_flat to all species
+add gene feature table text_pmcid_flat to all species
+
+synchronize schemas
+accept all changes
+
+generate sql for mart ensembl_mart_56 as /home/data/marts/ensembl56/sql/ensembl_56.zip
+execute sql for mart ensembl_mart_56 from /home/data/marts/ensembl56/sql/ensembl_56.zip
+
+open mart database ensembl_mart_56 on martdb.ensembl.org 5316 as anonymous "" with com.mysql.jdbc.Driver
+save database datasets in directory /home/data/marts/ensembl56/meta_xml
+
+open dataset gene_ensembl of mart ensembl_mart_56 in directory /home/data/marts/ensembl56/meta_xml
+
+add attribute group bergmanlab with title PUBMED2ENSEMBL FEATURES:
+set description of attribute group bergmanlab as Features introduced by the pubmed2ensembl project.
+add attribute collection gene2pubmed with title Gene2PubMed
+
+add feature entrez with title Entrez: PubMed ID
+add filter entrez with title Entrez: PubMed ID(s)
+set linkout url to exturl|http://www.ncbi.nlm.nih.gov/pubmed/%s
+add feature entrez_flat with title Entrez: PubMed ID(s) [List]
+add filter entrez_flat with title Entrez: PubMed ID(s) [List]
+set linkout url to exturl|list:http://www.ncbi.nlm.nih.gov/pubmed/%s
+
+add feature pmc for table column pmid with title PMC: PubMed ID
+add filter pmc with title PMC: PubMed ID(s)
+set linkout url to exturl|http://www.ncbi.nlm.nih.gov/pubmed/%s
+add feature pmc for table column pmcid with title PMC: PubMed Central ID
+add filter pmc with title PMC: PubMed Central ID(s)
+set linkout url to exturl|pmcconversion:http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=%s
+add filter pmc_pmid_flat with title PMC: PubMed ID(s) [List/Excerpts]
+add feature pmc_pmid_flat with title PMC: PubMed ID(s) [List/Excerpts]
+set linkout url to exturl|pmconversionlist:http://www.ncbi.nlm.nih.gov/pubmed/%s
+add filter pmc_pmcid_flat with title PMC: PubMed Central ID(s) [List/Excerpts]
+add feature pmc_pmcid_flat with title PMC: PubMed Central ID(s) [List/Excerpts]
+set linkout url to exturl|pmcconversionlist:http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=%s
+
+add default feature medline for table column pmid with title MEDLINE: PubMed ID 
+add filter medline with title MEDLINE: PubMed ID(s)
+set linkout url to exturl|http://www.ncbi.nlm.nih.gov/pubmed/%s
+add filter medline_flat with title MEDLINE: PubMed ID(s) [List/Excerpts]
+add feature medline_flat with title MEDLINE: PubMed ID(s) [List/Excerpts]
+set linkout url to exturl|pmconversionlist:http://www.ncbi.nlm.nih.gov/pubmed/%s
+
+add feature medline_oct09 for table column pmid with title MEDLINE (Oct'09): PubMed ID
+add filter medline_oct09 with title MEDLINE (Oct'09): PubMed ID(s)
+set linkout url to exturl|http://www.ncbi.nlm.nih.gov/pubmed/%s
+add filter medline_oct09_flat with title MEDLINE (Oct'09): PubMed ID(s) [List/Excerpts]
+add feature medline_oct09_flat with title MEDLINE (Oct'09): PubMed ID(s) [List/Excerpts]
+set linkout url to exturl|pmconversionlist:http://www.ncbi.nlm.nih.gov/pubmed/%s
+
+add feature blast56_all for table column pmid with title EMBL BLAST (unfiltered): PubMed ID
+add filter blast56_all with title EMBL BLAST (unfiltered): PubMed ID(s)
+set linkout url to exturl|http://www.ncbi.nlm.nih.gov/pubmed/%s
+add filter blast56_all_flat with title EMBL BLAST (unfilterd): PubMed ID(s) [List]
+add feature blast56_all_flat with title EMBL BLAST (unfiltered): PubMed ID(s) [List]
+set linkout url to exturl|list:http://www.ncbi.nlm.nih.gov/pubmed/%s
+
+add feature blast56_c100 for table column pmid with title EMBL BLAST (cut off 100): PubMed ID
+add filter blast56_c100 with title EMBL BLAST (cut off 100): PubMed ID(s)
+set linkout url to exturl|http://www.ncbi.nlm.nih.gov/pubmed/%s
+add filter blast56_c100_flat with title EMBL BLAST (cut off 100): PubMed ID(s) [List]
+add feature blast56_c100_flat with title EMBL BLAST (cut off 100): PubMed ID(s) [List]
+set linkout url to exturl|list:http://www.ncbi.nlm.nih.gov/pubmed/%s
+
+add feature blast56_c100t for table column pmid with title EMBL BLAST: PubMed ID
+add filter blast56_c100t with title EMBL BLAST: PubMed ID(s)
+set linkout url to exturl|http://www.ncbi.nlm.nih.gov/pubmed/%s
+add filter blast56_c100t_flat with title EMBL BLAST: PubMed ID(s) [List]
+add feature blast56_c100t_flat with title EMBL BLAST: PubMed ID(s) [List]
+set linkout url to exturl|list:http://www.ncbi.nlm.nih.gov/pubmed/%s
+
+add feature embl for table column pmid with title EMBL XREF: PubMed ID
+add filter embl with title EMBL XREF: PubMed ID(s)
+set linkout url to exturl|http://www.ncbi.nlm.nih.gov/pubmed/%s
+add filter embl_flat with title EMBL: XREF PubMed ID(s) [List]
+add feature embl_flat with title EMBL: XREF PubMed ID(s) [List]
+set linkout url to exturl|list:http://www.ncbi.nlm.nih.gov/pubmed/%s
+
+add feature text for table column pmid with title text2genome: PubMed ID
+add filter text with title text2genome: PubMed ID(s)
+set linkout url to exturl|list:http://kumiho.smith.man.ac.uk/bergman/text2genome/inspector.cgi?pmid=%s
+add feature text for table column pmcid with title text2genome: PubMed Central ID
+add filter text with title text2genome: PubMed Central ID(s)
+set linkout url to exturl|pmcconversion:http://kumiho.smith.man.ac.uk/bergman/text2genome/inspector.cgi?pmcId=%s
+add filter text_pmid_flat with title text2genome: PubMed ID(s) [List]
+add feature text_pmid_flat with title text2genome: PubMed ID(s) [List]
+set linkout url to exturl|list:http://kumiho.smith.man.ac.uk/bergman/text2genome/inspector.cgi?pmid=%s
+add filter text_pmcid_flat with title text2genome: PubMed Central ID(s) [List]
+add feature text_pmcid_flat with title text2genome: PubMed Central ID(s) [List]
+set linkout url to exturl|pmcconversionlist:http://kumiho.smith.man.ac.uk/bergman/text2genome/inspector.cgi?pmcId=%s
+
+save all changes of mart ensembl_mart_56
+
+open mart database ensembl_mart_56 on 127.0.0.1 3307 as USER PASS  with com.mysql.jdbc.Driver
+upload database datasets from directory /home/data/marts/ensembl56/meta_xml
+
+import template configuration of dataset gene_ensembl from database
+export template configuration to database
+
