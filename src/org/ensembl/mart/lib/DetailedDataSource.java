@@ -1,4 +1,5 @@
 /*
+	Copyright (C) 2012 Joachim Baran
 	Copyright (C) 2003 EBI, GRL
 
 	This library is free software; you can redistribute it and/or
@@ -774,4 +775,11 @@ public class DetailedDataSource implements DataSource {
     return buf.toString();
   }
 
+  public boolean isWrapperFor(Class clazz) throws SQLException {
+    return false;
+  }
+
+  public Object unwrap(Class clazz) throws SQLException {
+    return null;
+  }
 }

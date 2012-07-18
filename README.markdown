@@ -15,6 +15,22 @@ mainly due to the lack of documentation and
 some minor cosmetic issues. However, we used MartScript in production
 to create: [www.pubmed2ensembl.org](http://www.pubmed2ensembl.org)
 
+### Executing MartScripts
+
+Clone this repo or download the ZIP file. With Java 1.6 and Perl 5.12
+(or newer) run the following:
+
+    for jar in lib/*.jar ; do export CLASSPATH=$CLASSPATH:`pwd`/$jar ; done
+    cd bin
+    java -Xmx3G org.bergmanlab.martscript.MartScript yourscript.mscr
+
+### Re-compiling MartScript
+
+MartScript's Java classes can be recompiled using:
+
+    for jar in lib/*.jar ; do export CLASSPATH=$CLASSPATH:`pwd`/$jar ; done
+    javac -source 1.4 -d bin -sourcepath src src/org/bergmanlab/martscript/MartScript.java
+
 Supporting Software
 -------------------
 

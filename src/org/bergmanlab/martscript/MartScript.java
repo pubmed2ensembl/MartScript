@@ -74,6 +74,7 @@ public class MartScript implements SystemExitConstants {
 	    	e.printStackTrace();
 	    }
 
+	    System.exit(0);
 	}
 
 }
